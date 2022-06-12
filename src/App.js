@@ -1,26 +1,19 @@
 import { Component } from 'react';
 import Navbar from './components/layout/Navbar';
-import Useritems from './components/users/Useritems';
+import Users from './components/users/Users';
 import './App.css';
 
 class App extends Component {
   
-  
-  
-  
-  
-  
   render(){
     return (
       <div className="App">
-        <Navbar
-          title = 'GitHub Finder'
-          icon = 'fab fa-github'
-        />
-        <Useritems 
+        <Navbar/>
+
+        <div className="container">
+          <Users/>
+        </div>
         
-        
-        />
       </div>
     );
   }
