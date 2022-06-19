@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
+import propTypes from 'prop-types'
 
-class Useritems extends Component {
-
-  render() {
-    //Destructuring the state 
-    const {id,login,avatar_url,html_url} = this.props.user
+const UserItems = ({user: {id,login,avatar_url,html_url}}) => { 
 
     return (
       <div className='card text-center'>
@@ -16,6 +13,10 @@ class Useritems extends Component {
       </div>
     )
   }
+
+UserItems.propTypes = {
+  user: propTypes.object.isRequired,
+
 }
 
-export default Useritems
+export default UserItems
