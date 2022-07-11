@@ -2,8 +2,10 @@ import React,{useEffect, Fragment} from 'react'
 import Spinner from '../layout/Spinner'
 import PropTypes  from 'prop-types';
 import {Link, useParams } from 'react-router-dom'
+import Repos from '../repos/Repos';
 
-function User({getUser, loading, user}) {
+
+function User({getUser, loading, user, getUserRepos,repos}) {
 
   const{login} = useParams();
 
@@ -24,7 +26,9 @@ function User({getUser, loading, user}) {
 
 
   useEffect(() => {
-    getUser(login)
+    getUser(login);
+    getUserRepos(login);
+    //eslint-disable-next-line
   }, []);
 
   if(loading) return (<Spinner />)
@@ -78,6 +82,8 @@ function User({getUser, loading, user}) {
         <div className='badge badge-light'> Public Repos: {public_repos}</div>
         <div className='badge badge-dark'> Public Gists: {public_gists}</div>
       </div>
+    <Repos repos = {repos} />
+
     </Fragment>
   )
 }
@@ -85,7 +91,8 @@ function User({getUser, loading, user}) {
 User.propTypes = {
   loading: PropTypes.bool,
   user: PropTypes.object.isRequired,
-  getUser: PropTypes.func.isRequired
+  getUser: PropTypes.func.isRequired,
+  getUserRepos:PropTypes.func.isRequired
 }
 
 
